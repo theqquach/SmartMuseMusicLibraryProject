@@ -3,9 +3,9 @@ package model;
 // Represents a song with a name, artist, length (in seconds), favourited status
 public class Song {
 
-    private String name;      // song name
-    private String artist;    // song artist
-    private int length;       // song length
+    private final String name;      // song name
+    private final String artist;    // song artist
+    private final int length;       // song length
     private String status;    // favourited status "favourited", "disliked" or "none"
 
     // REQUIRES: songLength >= 0

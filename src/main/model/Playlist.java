@@ -5,7 +5,7 @@ import java.util.ArrayList;
 // Represents a playlist with name, length (# of songs), playtime (length of playlist in seconds), list of all songs
 public class Playlist {
 
-    private String name;  // name of playlist
+    private final String name;  // name of playlist
     private int length;   // number of songs in playlist
     private int playtime; // total playtime of all songs in the playlist
     private ArrayList<Song> songList; // list of songs in the playlist
@@ -32,6 +32,18 @@ public class Playlist {
             this.playtime = this.playtime - song.getLength();
             songList.remove(song);
         }
+    }
+
+    // REQUIRES: no duplicate song name
+    // EFFECTS: finds a song with given name in playlist, if none found, return none found.
+    public Song findSong(String songName) {
+        Song selected = null;
+        for (int i = 0; i < this.getLength(); i++) {
+            if (this.songList.get(i).getName() == songName) {
+                selected = this.getSongList().get(i);
+            }
+        }
+        return selected;
     }
 
     public String getName() {

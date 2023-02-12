@@ -23,6 +23,9 @@ class SongTest {
     public void favouriteSongTest() {
         this.song1.favouriteSong();
         assertEquals(song1.getStatus(), "favourited");
+        assertEquals(song1.getLength(), 223);
+        assertEquals(song1.getArtist(), "Taylor Swift");
+        assertEquals(song1.getName(), "Red");
     }
 
     @Test
@@ -30,6 +33,9 @@ class SongTest {
         this.song2.dislikeSong();
         this.song2.favouriteSong();
         assertEquals(song2.getStatus(), "favourited");
+        assertEquals(song2.getLength(), 212);
+        assertEquals(song2.getArtist(), "NewJeans");
+        assertEquals(song2.getName(), "OMG");
     }
 
     @Test
@@ -37,6 +43,9 @@ class SongTest {
         this.song3.favouriteSong();
         this.song3.favouriteSong();
         assertEquals(song3.getStatus(), "favourited");
+        assertEquals(song3.getLength(), 165);
+        assertEquals(song3.getArtist(), "Tate McRae");
+        assertEquals(song3.getName(), "what would you do?");
     }
 
     @Test
