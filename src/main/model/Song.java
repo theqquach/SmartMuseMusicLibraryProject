@@ -19,17 +19,17 @@ public class Song {
 
     // EFFECTS: sets status to "favourited"
     public void favouriteSong() {
-        //stub
+        this.status = "favourited";
     }
 
     // EFFECTS: sets status to "disliked"
     public void dislikeSong() {
-        //stub
+        this.status = "disliked";
     }
 
     // EFFECTS: resets status to "none"
     public void resetStatus() {
-        //stub
+        this.status = "none";
     }
 
     public String getName() {

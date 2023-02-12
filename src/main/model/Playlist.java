@@ -24,14 +24,30 @@ public class Playlist {
         songList.add(song);
     }
 
-    // REQUIRES: song must be in playlist
+    // REQUIRES: song must be in playlist and playlist must not be empty
     // EFFECTS: adds a song to the playlist, increases playlist length, playtime by song length ands adds song to List.
     public void removeSong(Song song) {
         if (songList.contains(song)) {
             this.length--;
-            this.playtime = song.getLength() + this.playtime;
-            songList.add(song);
+            this.playtime = this.playtime - song.getLength();
+            songList.remove(song);
         }
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getLength() {
+        return this.length;
+    }
+
+    public int getPlaytime() {
+        return this.playtime;
+    }
+
+    public ArrayList<Song> getSongList() {
+        return this.songList;
     }
 
 }
