@@ -41,13 +41,11 @@ class PlaylistListTest {
         assertEquals(this.lib1.findPlaylist("Workout"), playlist3);
     }
 
+    @Test
     public void findPlaylistNullTest() {
         lib1.addToPlaylists(playlist1);
         lib1.addToPlaylists(playlist2);
         lib1.addToPlaylists(playlist3);
-        assertEquals(this.lib1.findPlaylist("Pop"), playlist1);
-        assertEquals(this.lib1.findPlaylist("Rock and Roll"), playlist2);
-        assertEquals(this.lib1.findPlaylist("Workout"), playlist3);
         assertEquals(this.lib1.findPlaylist("Dancing"), null);
     }
 }

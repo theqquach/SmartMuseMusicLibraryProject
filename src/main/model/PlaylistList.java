@@ -11,7 +11,7 @@ public class PlaylistList {
     }
 
     // REQUIRES: no duplicate playlist name
-    // EFFECTS: finds a playlist with given name in playlists, if none found, return none found.
+    // EFFECTS: finds a playlist with given name in playlists, if none found, return null.
     public Playlist findPlaylist(String playlistName) {
         for (Playlist playlist : playlists) {
             if (playlist.getName().equals(playlistName)) {
