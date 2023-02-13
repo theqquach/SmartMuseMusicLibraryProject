@@ -4,7 +4,6 @@ import model.Playlist;
 import model.PlaylistList;
 import model.Song;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // Music library application
@@ -55,10 +54,12 @@ public class MusicLibraryApp {
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tplaylists -> view all playlists");
+        System.out.println("\tview playlist -> view songs in a playlist");
         System.out.println("\tsongs -> view all songs");
         System.out.println("\tnew song -> add a new song to your library");
         System.out.println("\tnew playlist -> create a new playlist");
         System.out.println("\t+ -> add a song from your library to a playlist");
+        System.out.println("\t- -> remove a song from a playlist");
         System.out.println("\texit -> quit");
     }
 
@@ -75,6 +76,10 @@ public class MusicLibraryApp {
             makeNewPlaylist();
         } else if (command.equals("+")) {
             addSongToPlaylist();
+        } else if (command.equals("-")) {
+            removeSongFromPlaylist();
+        } else if (command.equals("view playlist")) {
+            viewPlaylist();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -155,10 +160,44 @@ public class MusicLibraryApp {
             this.playlists.findPlaylist(playlistName).addSong(allSongs.findSong(songName));
             System.out.println("Song added!");
         } else {
-            System.out.println("Could not add song to playlist :(");
+            System.out.println("Error");
         }
 
     }
 
+    // REQUIRES: song is in playlist
+    // MODIFIES: this
+    // EFFECTS: removes a song to a playlist
+    private void removeSongFromPlaylist() {
+        System.out.println("Enter playlist name you want to remove a song from: ");
+        String playlistName = input.next();
+        System.out.println("Enter song name you want to remove: ");
+        String songName = input.next();
+
+        Playlist givenPlaylist = this.playlists.findPlaylist(playlistName);
+
+        if (this.playlists.findPlaylist(playlistName) != null) {
+            givenPlaylist.removeSong(givenPlaylist.findSong(songName));
+            System.out.println("Song removed");
+        } else {
+            System.out.println("Error 2");
+        }
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: shows all songs in a specific playlist.
+    private void viewPlaylist() {
+        System.out.println("Enter playlist name you want to view: ");
+        String playlistName = input.next();
+
+        Playlist givenPlaylist = this.playlists.findPlaylist(playlistName);
+
+        System.out.println(playlistName + " songs: ");
+        for (int i = 0; i < givenPlaylist.getLength(); ) {
+            System.out.println("\t" + givenPlaylist.getSongList().get(i).getName());
+            i++;
+        }
+    }
 
 }

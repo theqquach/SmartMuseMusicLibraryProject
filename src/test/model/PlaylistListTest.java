@@ -23,10 +23,18 @@ class PlaylistListTest {
     }
 
     @Test
+    public void addToPlaylistTest() {
+        this.lib1.addToPlaylists(playlist1);
+        this.lib1.addToPlaylists(playlist3);
+        assertEquals(lib1.getPlaylists().get(0), playlist1);
+        assertEquals(lib1.getPlaylists().get(1), playlist3);
+    }
+
+    @Test
     public void findPlaylistTest() {
-        lib1.add(playlist1);
-        lib1.add(playlist2);
-        lib1.add(playlist3);
+        lib1.addToPlaylists(playlist1);
+        lib1.addToPlaylists(playlist2);
+        lib1.addToPlaylists(playlist3);
         assertEquals(this.lib1.findPlaylist("Pop"), playlist1);
         assertEquals(this.lib1.findPlaylist("Rock and Roll"), playlist2);
         assertEquals(this.lib1.findPlaylist("Workout"), playlist3);

@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class PlaylistList extends ArrayList {
+public class PlaylistList {
 
     private ArrayList<Playlist> playlists;
 
@@ -14,7 +14,7 @@ public class PlaylistList extends ArrayList {
     // EFFECTS: finds a playlist with given name in playlists, if none found, return none found.
     public Playlist findPlaylist(String playlistName) {
         for (Playlist playlist : playlists) {
-            if (playlist.getName() == playlistName) {
+            if (playlist.getName().equals(playlistName)) {
                 return playlist;
             }
         }
@@ -23,6 +23,12 @@ public class PlaylistList extends ArrayList {
 
     public ArrayList<Playlist> getPlaylists() {
         return playlists;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds given playlist to playlist list.
+    public void addToPlaylists(Playlist playlist) {
+        this.playlists.add(playlist);
     }
 
 

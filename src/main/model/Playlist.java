@@ -39,7 +39,7 @@ public class Playlist {
     public Song findSong(String songName) {
         Song selected = null;
         for (int i = 0; i < this.getLength(); i++) {
-            if (this.songList.get(i).getName() == songName) {
+            if (this.songList.get(i).getName().equals(songName)) {
                 selected = this.getSongList().get(i);
             }
         }
