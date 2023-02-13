@@ -111,12 +111,12 @@ public class MusicLibraryApp {
         System.out.print("Enter song name: ");
         String name = input.next();
 
-        if (name.isBlank()) {
+        if (name.isEmpty()) {
             System.out.println("Please input a song name");
         } else {
             System.out.print("Enter artist name: ");
             String artist = input.next();
-            if (artist.isBlank()) {
+            if (artist.isEmpty()) {
 
                 System.out.println("Please input an artist");
             } else {
