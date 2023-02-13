@@ -139,7 +139,7 @@ public class MusicLibraryApp {
         System.out.print("Enter new playlist name: ");
         String name = input.next();
 
-        if (name.isBlank()) {
+        if (name.isEmpty()) {
             System.out.println("Please input a playlist name");
         } else {
             Playlist playlist = new Playlist(name);
