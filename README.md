@@ -19,6 +19,6 @@ I love listening to music, and love making playlists for different moods, settin
 - As a user, I want to add songs to my music library.
 - As a user, I want to add songs to my own playlists.
 - As a user, I want to save a created playlist to my music library.
-- As a user, I want to mark songs as "favourited" and "disliked" so I can see them seperately.
+- As a user, I want to mark songs as "favourited" and "disliked" so I can see them separately.
 - As a user, I want to see all my songs and playlists in my library.
  

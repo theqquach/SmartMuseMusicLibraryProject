@@ -31,7 +31,7 @@ public class MusicLibraryApp {
             command = input.next();
             command = command.toLowerCase();
 
-            if (command.equals("exit")) {
+            if (command.equals("q")) {
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -53,33 +53,42 @@ public class MusicLibraryApp {
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\tplaylists -> view all playlists");
-        System.out.println("\tview playlist -> view songs in a playlist");
-        System.out.println("\tsongs -> view all songs");
-        System.out.println("\tnew song -> add a new song to your library");
-        System.out.println("\tnew playlist -> create a new playlist");
-        System.out.println("\t+ -> add a song from your library to a playlist");
-        System.out.println("\t- -> remove a song from a playlist");
-        System.out.println("\texit -> quit");
+        System.out.println("\tpl  -> view all playlists");
+        System.out.println("\ts   -> view all songs in the library");
+        System.out.println("\tfs  -> view all favourited songs");
+        System.out.println("\tvp  -> view songs in a playlist");
+        System.out.println("\tnpl -> create a new playlist");
+        System.out.println("\t+   -> add a song from your library to a playlist");
+        System.out.println("\t-   -> remove a song from a playlist");
+        System.out.println("\tns  -> add a new song to your library");
+        System.out.println("\t*   -> favourite a song");
+        System.out.println("\tr   -> reset song status");
+        System.out.println("\tq   -> quit");
     }
 
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("playlists")) {
+        if (command.equals("pl")) {
             viewPlaylists();
-        } else if (command.equals("songs")) {
+        } else if (command.equals("s")) {
             viewSongs();
-        } else if (command.equals("new song")) {
+        } else if (command.equals("ns")) {
             addNewSongToLibrary();
-        } else if (command.equals("new playlist")) {
+        } else if (command.equals("npl")) {
             makeNewPlaylist();
         } else if (command.equals("+")) {
             addSongToPlaylist();
         } else if (command.equals("-")) {
             removeSongFromPlaylist();
-        } else if (command.equals("view playlist")) {
+        } else if (command.equals("vp")) {
             viewPlaylist();
+        } else if (command.equals("*")) {
+            favouriteSong();
+        } else if (command.equals("r")) {
+            resetSongStatus();
+        } else if (command.equals("fs")) {
+            viewFavouriteSongs();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -101,6 +110,16 @@ public class MusicLibraryApp {
         System.out.println("Your Songs:");
         for (int i = 0; i < this.allSongs.getLength(); ) {
             System.out.println(this.allSongs.getSongList().get(i).getName());
+            i++;
+        }
+    }
+
+    private void viewFavouriteSongs() {
+        System.out.println("Your Favourited Songs:");
+        for (int i = 0; i < this.allSongs.getLength(); ) {
+            if (this.allSongs.getSongList().get(i).getStatus().equals("favourited")) {
+                System.out.println(this.allSongs.getSongList().get(i).getName());
+            }
             i++;
         }
     }
@@ -200,4 +219,23 @@ public class MusicLibraryApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: favourites the given song
+    private void favouriteSong() {
+        System.out.println("Enter song name you want to favourite: ");
+        String songName = input.next();
+        Song selected = this.allSongs.findSong(songName);
+        selected.favouriteSong();
+        System.out.println("Song favourited!");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: resets the given song's status
+    private void resetSongStatus() {
+        System.out.println("Enter song name: ");
+        String songName = input.next();
+        Song selected = this.allSongs.findSong(songName);
+        selected.resetStatus();
+        System.out.println("Song status reset");
+    }
 }
