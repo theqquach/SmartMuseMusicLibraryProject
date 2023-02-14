@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+// Represents a list of playlists.
 public class PlaylistList {
 
     private ArrayList<Playlist> playlists;
