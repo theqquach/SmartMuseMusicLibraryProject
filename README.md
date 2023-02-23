@@ -21,4 +21,6 @@ I love listening to music, and love making playlists for different moods, settin
 - As a user, I want to save a created playlist to my music library.
 - As a user, I want to mark songs as "favourited" and "disliked" so I can see them separately.
 - As a user, I want to see all my songs and playlists in my library.
+- As a user, I want the option to save my current library.
+- As a user, when I open the application, I want to be able to load a library from a file.
  
