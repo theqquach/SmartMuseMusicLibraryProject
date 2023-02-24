@@ -62,7 +62,7 @@ public class MusicLibraryApp {
         System.out.println("\t-   -> remove a song from a playlist");
         System.out.println("\tns  -> add a new song to your library");
         System.out.println("\t*   -> favourite a song");
-        System.out.println("\tr   -> reset song status");
+        System.out.println("\tu   -> unfavourite a song");
         System.out.println("\tq   -> quit");
     }
 
@@ -83,12 +83,6 @@ public class MusicLibraryApp {
             removeSongFromPlaylist();
         } else if (command.equals("vp")) {
             viewPlaylist();
-        } else if (command.equals("*")) {
-            favouriteSong();
-        } else if (command.equals("r")) {
-            resetSongStatus();
-        } else if (command.equals("fs")) {
-            viewFavouriteSongs();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -110,16 +104,6 @@ public class MusicLibraryApp {
         System.out.println("Your Songs:");
         for (int i = 0; i < this.allSongs.getLength(); ) {
             System.out.println(this.allSongs.getSongList().get(i).getName());
-            i++;
-        }
-    }
-
-    private void viewFavouriteSongs() {
-        System.out.println("Your Favourited Songs:");
-        for (int i = 0; i < this.allSongs.getLength(); ) {
-            if (this.allSongs.getSongList().get(i).getStatus().equals("favourited")) {
-                System.out.println(this.allSongs.getSongList().get(i).getName());
-            }
             i++;
         }
     }
@@ -217,25 +201,5 @@ public class MusicLibraryApp {
             System.out.println("\t" + givenPlaylist.getSongList().get(i).getName());
             i++;
         }
-    }
-
-    // MODIFIES: this
-    // EFFECTS: favourites the given song
-    private void favouriteSong() {
-        System.out.println("Enter song name you want to favourite: ");
-        String songName = input.next();
-        Song selected = this.allSongs.findSong(songName);
-        selected.favouriteSong();
-        System.out.println("Song favourited!");
-    }
-
-    // MODIFIES: this
-    // EFFECTS: resets the given song's status
-    private void resetSongStatus() {
-        System.out.println("Enter song name: ");
-        String songName = input.next();
-        Song selected = this.allSongs.findSong(songName);
-        selected.resetStatus();
-        System.out.println("Song status reset");
     }
 }
