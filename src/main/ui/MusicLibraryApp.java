@@ -7,6 +7,7 @@ import model.Song;
 import java.util.Scanner;
 
 // Music library application
+// Reference: draws from UI in TellerApp
 public class MusicLibraryApp {
 
     private PlaylistList playlists;
