@@ -1,0 +1,17 @@
+{
+    "name": "My Library",
+    "playlists": [
+        {
+            "name": "K-POP",
+            "length": "0",
+            "playtime": "0",
+            "songList": []
+        },
+        {
+            "name": "Taylor Swift",
+            "length": "0",
+            "playtime": "0",
+            "songList": []
+        }
+    ]
+}

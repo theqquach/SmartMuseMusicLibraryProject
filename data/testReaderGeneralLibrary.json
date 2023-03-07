@@ -1,0 +1,35 @@
+{
+  "name": "My Library",
+  "playlists": [
+    {
+      "name": "K-POP",
+      "length": "2",
+      "playtime": "700",
+      "songList": [
+        {
+          "artist": "New Jeans",
+          "name": "OMG",
+          "length": "300",
+          "status": "none"
+        },
+        {
+          "artist": "IU",
+          "name": "Lilac",
+          "length": "400",
+          "status": "none"
+        }
+      ]
+    },
+    {
+      "name": "Swiftie Songs",
+      "length": "1",
+      "playtime": "250",
+      "songList": [{
+        "artist": "Taylor Swift",
+        "name": "Style",
+        "length": "250",
+        "status": "none"
+      }]
+    }
+  ]
+}

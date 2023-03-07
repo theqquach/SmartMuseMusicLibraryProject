@@ -47,4 +47,10 @@ class LibraryTest {
         lib1.addToPlaylists(playlist3);
         assertEquals(this.lib1.findPlaylist("Dancing"), null);
     }
+
+    @Test
+    public void emptyLibraryToJsonTest() {
+        String json = lib1.toJson().toString();
+        assertEquals("{\"name\":\"Alex's Library\",\"playlists\":[]}", json);
+    }
 }

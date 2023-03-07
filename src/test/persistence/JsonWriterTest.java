@@ -48,12 +48,12 @@ class JsonWriterTest extends JsonTest {
             Library library = new Library("My Library");
             library.addToPlaylists(new Playlist("K-POP"));
             library.addToPlaylists(new Playlist("Taylor Swift"));
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralLibrary.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyPlaylists.json");
             writer.open();
             writer.write(library);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralLibrary.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyPlaylists.json");
             library = reader.read();
             assertEquals("My Library", library.getName());
             List<Playlist> playlists = library.getPlaylists();
