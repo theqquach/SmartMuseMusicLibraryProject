@@ -3,7 +3,11 @@ package ui;
 import model.Playlist;
 import model.Library;
 import model.Song;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Music library application
@@ -11,9 +15,12 @@ import java.util.Scanner;
 // data persistence model draws from JSONSerializationDemo
 public class MusicLibraryApp {
 
+    private static final String JSON_STORE = "./data/library.json";
     private Library playlists;
     private Playlist allSongs;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the music library application
     public MusicLibraryApp() {
@@ -49,6 +56,8 @@ public class MusicLibraryApp {
         playlists = new Library("Your Library");
         allSongs = new Playlist("Song Library");
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         input.useDelimiter("\n");
     }
 
@@ -93,12 +102,27 @@ public class MusicLibraryApp {
         }
     }
 
+    // EFFECTS: saves library to file
     private void saveLibrary() {
-
+        try {
+            jsonWriter.open();
+            jsonWriter.write(playlists);
+            jsonWriter.close();
+            System.out.println("Saved " + playlists.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 
+    // MODIFIES: this
+    // EFFECTS: loads library from file
     private void loadLibrary() {
-
+        try {
+            playlists = jsonReader.read();
+            System.out.println("Loaded " + playlists.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     // MODIFIES: this
