@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class LibraryTest {
     private Library lib1;
@@ -28,6 +29,7 @@ class LibraryTest {
         this.lib1.addToPlaylists(playlist3);
         assertEquals(lib1.getPlaylists().get(0), playlist1);
         assertEquals(lib1.getPlaylists().get(1), playlist3);
+        assertEquals(lib1.getName(), "Alex's Library");
     }
 
     @Test
@@ -45,12 +47,19 @@ class LibraryTest {
         lib1.addToPlaylists(playlist1);
         lib1.addToPlaylists(playlist2);
         lib1.addToPlaylists(playlist3);
-        assertEquals(this.lib1.findPlaylist("Dancing"), null);
+        assertNull(this.lib1.findPlaylist("Dancing"));
     }
 
     @Test
     public void emptyLibraryToJsonTest() {
         String json = lib1.toJson().toString();
         assertEquals("{\"name\":\"Alex's Library\",\"playlists\":[]}", json);
+    }
+
+    @Test
+    public void emptyPlaylistsToJsonTest() {
+        lib1.addToPlaylists(playlist1);
+        String json = lib1.toJson().toString();
+        assertEquals("{\"name\":\"Alex's Library\",\"playlists\":[{\"name\":\"Pop\",\"length\":\"0\",\"playtime\":\"0\",\"songList\":[]}]}", json);
     }
 }

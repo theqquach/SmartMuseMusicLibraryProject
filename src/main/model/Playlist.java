@@ -12,7 +12,7 @@ public class Playlist implements Writable {
     private final String name;  // name of playlist
     private int length;   // number of songs in playlist
     private int playtime; // total playtime of all songs in the playlist
-    private ArrayList<Song> songList; // list of songs in the playlist
+    private final ArrayList<Song> songList; // list of songs in the playlist
 
     public Playlist(String playlistName) {
         name = playlistName;

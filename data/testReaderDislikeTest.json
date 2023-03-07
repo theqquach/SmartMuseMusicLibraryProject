@@ -1,0 +1,14 @@
+{
+    "name": "My Library",
+    "playlists": [{
+        "name": "Pop",
+        "length": "1",
+        "playtime": "240",
+        "songList": [{
+            "artist": "Taylor Swift",
+            "name": "Bad Blood",
+            "length": "240",
+            "status": "disliked"
+        }]
+    }]
+}
