@@ -55,6 +55,7 @@ public class JsonReader {
         for (Object json : jsonArray) {
             JSONObject nextPlaylist = (JSONObject) json;
             addPlaylist(lib, nextPlaylist);
+
         }
     }
 
@@ -87,6 +88,6 @@ public class JsonReader {
         } else if (status.equals("disliked")) {
             song.dislikeSong();
         }
-
+        playlist.addSong(song);
     }
 }
