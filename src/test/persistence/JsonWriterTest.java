@@ -100,4 +100,54 @@ class JsonWriterTest extends JsonTest {
             fail("Exception should not have been thrown");
         }
     }
+
+    @Test
+    void favouritedSongInLibraryTest() {
+        try {
+            Library library = new Library("My Library");
+            Playlist playlist = new Playlist("K-POP");
+            Song song = new Song("OMG", "New Jeans", 300);
+            song.favouriteSong();
+            playlist.addSong(song);
+            library.addToPlaylists(playlist);
+            JsonWriter writer = new JsonWriter("./data/testWriterFavouriteTest.json");
+            writer.open();
+            writer.write(library);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterFavouriteTest.json");
+            library = reader.read();
+            assertEquals("My Library", library.getName());
+            assertEquals(1, library.getPlaylists().size());
+            checkPlaylist("K-POP", 1, 300, library.getPlaylists().get(0));
+            checkSong("OMG", "New Jeans", 300, "favourited", library.getPlaylists().get(0).getSongList().get(0));
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        }
+    }
+
+    @Test
+    void dislikedSongInLibraryTest() {
+        try {
+            Library library = new Library("My Library");
+            Playlist playlist = new Playlist("Pop");
+            Song song = new Song("Bad Blood", "Taylor Swift", 240);
+            song.dislikeSong();
+            playlist.addSong(song);
+            library.addToPlaylists(playlist);
+            JsonWriter writer = new JsonWriter("./data/testWriterDislikeTest.json");
+            writer.open();
+            writer.write(library);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterDislikeTest.json");
+            library = reader.read();
+            assertEquals("My Library", library.getName());
+            assertEquals(1, library.getPlaylists().size());
+            checkPlaylist("Pop", 1, 240, library.getPlaylists().get(0));
+            checkSong("Bad Blood", "Taylor Swift", 240, "disliked", library.getPlaylists().get(0).getSongList().get(0));
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        }
+    }
 }

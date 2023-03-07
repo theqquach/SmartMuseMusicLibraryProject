@@ -49,7 +49,7 @@ public class JsonReader {
     }
 
     // MODIFIES: lib
-    // EFFECTS: parses thingies from JSON object and adds them to Library
+    // EFFECTS: parses playlists from JSON object and adds them to Library
     private void addPlaylists(Library lib, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("playlists");
         for (Object json : jsonArray) {
@@ -60,7 +60,7 @@ public class JsonReader {
     }
 
     // MODIFIES: lib
-    // EFFECTS: parses thingy from JSON object and adds it to Library
+    // EFFECTS: parses playlist from JSON object and adds it to Library
     private void addPlaylist(Library lib, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Playlist playlist = new Playlist(name);
@@ -68,6 +68,8 @@ public class JsonReader {
         lib.addToPlaylists(playlist);
     }
 
+    // MODIFIES: playlist
+    // EFFECTS: parses songs from JSON object and adds it to playlist
     private void addSongs(Playlist playlist, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("songList");
         for (Object json : jsonArray) {
@@ -76,6 +78,8 @@ public class JsonReader {
         }
     }
 
+    // MODIFIES: playlist
+    // EFFECTS: parses song from JSON object and adds it to playlist
     private void addSong(Playlist playlist, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         String artist = jsonObject.getString("artist");

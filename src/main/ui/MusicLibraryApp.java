@@ -24,6 +24,9 @@ public class MusicLibraryApp {
 
     // EFFECTS: runs the music library application
     public MusicLibraryApp() {
+        playlists = new Library("Your Library");
+        allSongs = new Playlist("Song Library");
+        playlists.addToPlaylists(allSongs);
         runApp();
     }
 
@@ -53,8 +56,6 @@ public class MusicLibraryApp {
     // MODIFIES: this
     // EFFECTS: initializes library
     private void init() {
-        playlists = new Library("Your Library");
-        allSongs = new Playlist("Song Library");
         input = new Scanner(System.in);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -139,8 +140,8 @@ public class MusicLibraryApp {
     // EFFECTS: shows all songs
     private void viewSongs() {
         System.out.println("Your Songs:");
-        for (int i = 0; i < this.allSongs.getLength(); ) {
-            System.out.println(this.allSongs.getSongList().get(i).getName());
+        for (int i = 0; i < this.playlists.findPlaylist("Song Library").getLength(); ) {
+            System.out.println(this.playlists.findPlaylist("Song Library").getSongList().get(i).getName());
             i++;
         }
     }
@@ -166,7 +167,7 @@ public class MusicLibraryApp {
                     System.out.println("Song length must be greater than 0 seconds");
                 } else {
                     Song newSong = new Song(name, artist, length);
-                    this.allSongs.addSong(newSong);
+                    this.playlists.findPlaylist("Song Library").addSong(newSong);
                     System.out.println("New song added!");
                 }
             }
@@ -197,7 +198,8 @@ public class MusicLibraryApp {
         String songName = input.next();
 
         if (this.playlists.findPlaylist(playlistName) != null) {
-            this.playlists.findPlaylist(playlistName).addSong(allSongs.findSong(songName));
+            Playlist songLibrary = playlists.findPlaylist("Song Library");
+            this.playlists.findPlaylist(playlistName).addSong(songLibrary.findSong(songName));
             System.out.println("Song added!");
         } else {
             System.out.println("Error");

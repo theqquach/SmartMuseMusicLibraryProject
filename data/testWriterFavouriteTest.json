@@ -1,0 +1,14 @@
+{
+    "name": "My Library",
+    "playlists": [{
+        "name": "K-POP",
+        "length": "1",
+        "playtime": "300",
+        "songList": [{
+            "artist": "New Jeans",
+            "name": "OMG",
+            "length": "300",
+            "status": "favourited"
+        }]
+    }]
+}
