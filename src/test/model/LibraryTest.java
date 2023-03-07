@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PlaylistListTest {
-    private PlaylistList lib1;
-    private PlaylistList lib2;
+class LibraryTest {
+    private Library lib1;
+    private Library lib2;
     private Playlist playlist1;
     private Playlist playlist2;
     private Playlist playlist3;
 
     @BeforeEach
     public void setup() {
-        this.lib1 = new PlaylistList();
-        this.lib2 = new PlaylistList();
+        this.lib1 = new Library("Alex's Library");
+        this.lib2 = new Library("Mumma's Library");
         this.playlist1 = new Playlist("Pop");
         this.playlist2 = new Playlist("Rock and Roll");
         this.playlist3 = new Playlist("Workout");

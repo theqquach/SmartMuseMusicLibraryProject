@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a song with a name, artist, length (in seconds), favourited status
-public class Song {
+public class Song implements Writable {
 
     private final String name;      // song name
     private final String artist;    // song artist
@@ -48,4 +51,13 @@ public class Song {
         return status;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("artist", artist);
+        json.put("length", Integer.toString(length));
+        json.put("status", status);
+        return json;
+    }
 }

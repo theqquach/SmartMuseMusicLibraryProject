@@ -21,4 +21,9 @@ I love listening to music, and love making playlists for different moods, settin
 - As a user, I want to save a created playlist to my music library.
 - As a user, I want to mark songs as "favourited" and "disliked" so I can see them separately.
 - As a user, I want to see all my songs and playlists in my library.
+- As a user, I want to have the option to save my library.
+- As a user, I want to be able to load my library from file.
  
+## Attribution:
+- UI draws from TellerApp's UI implementation.
+- Data persistence draws from JSONSerialization's persistence implementation.

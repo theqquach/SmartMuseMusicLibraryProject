@@ -1,15 +1,17 @@
 package ui;
 
 import model.Playlist;
-import model.PlaylistList;
+import model.Library;
 import model.Song;
 
 import java.util.Scanner;
 
 // Music library application
+// UI draws from TellerApp
+// data persistence model draws from JSONSerializationDemo
 public class MusicLibraryApp {
 
-    private PlaylistList playlists;
+    private Library playlists;
     private Playlist allSongs;
     private Scanner input;
 
@@ -44,7 +46,7 @@ public class MusicLibraryApp {
     // MODIFIES: this
     // EFFECTS: initializes library
     private void init() {
-        playlists = new PlaylistList();
+        playlists = new Library("Your Library");
         allSongs = new Playlist("Song Library");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
@@ -53,17 +55,16 @@ public class MusicLibraryApp {
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\tpl  -> view all playlists");
-        System.out.println("\ts   -> view all songs in the library");
-        System.out.println("\tfs  -> view all favourited songs");
-        System.out.println("\tvp  -> view songs in a playlist");
-        System.out.println("\tnpl -> create a new playlist");
-        System.out.println("\t+   -> add a song from your library to a playlist");
-        System.out.println("\t-   -> remove a song from a playlist");
-        System.out.println("\tns  -> add a new song to your library");
-        System.out.println("\t*   -> favourite a song");
-        System.out.println("\tr   -> reset song status");
-        System.out.println("\tq   -> quit");
+        System.out.println("\tpl     -> view all playlists");
+        System.out.println("\ts      -> view all songs in the library");
+        System.out.println("\tvp     -> view songs in a playlist");
+        System.out.println("\tnpl    -> create a new playlist");
+        System.out.println("\t+      -> add a song from your library to a playlist");
+        System.out.println("\t-      -> remove a song from a playlist");
+        System.out.println("\tns     -> add a new song to your library");
+        System.out.println("\tsave   -> save your library");
+        System.out.println("\tload   -> load a library from file");
+        System.out.println("\tq      -> quit");
     }
 
     // MODIFIES: this
@@ -83,15 +84,21 @@ public class MusicLibraryApp {
             removeSongFromPlaylist();
         } else if (command.equals("vp")) {
             viewPlaylist();
-        } else if (command.equals("*")) {
-            favouriteSong();
-        } else if (command.equals("r")) {
-            resetSongStatus();
-        } else if (command.equals("fs")) {
-            viewFavouriteSongs();
+        } else if (command.equals("save")) {
+            saveLibrary();
+        } else if (command.equals("load")) {
+            loadLibrary();
         } else {
             System.out.println("Selection not valid...");
         }
+    }
+
+    private void saveLibrary() {
+
+    }
+
+    private void loadLibrary() {
+
     }
 
     // MODIFIES: this
@@ -110,16 +117,6 @@ public class MusicLibraryApp {
         System.out.println("Your Songs:");
         for (int i = 0; i < this.allSongs.getLength(); ) {
             System.out.println(this.allSongs.getSongList().get(i).getName());
-            i++;
-        }
-    }
-
-    private void viewFavouriteSongs() {
-        System.out.println("Your Favourited Songs:");
-        for (int i = 0; i < this.allSongs.getLength(); ) {
-            if (this.allSongs.getSongList().get(i).getStatus().equals("favourited")) {
-                System.out.println(this.allSongs.getSongList().get(i).getName());
-            }
             i++;
         }
     }
@@ -203,7 +200,6 @@ public class MusicLibraryApp {
         }
     }
 
-
     // MODIFIES: this
     // EFFECTS: shows all songs in a specific playlist.
     private void viewPlaylist() {
@@ -219,23 +215,5 @@ public class MusicLibraryApp {
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: favourites the given song
-    private void favouriteSong() {
-        System.out.println("Enter song name you want to favourite: ");
-        String songName = input.next();
-        Song selected = this.allSongs.findSong(songName);
-        selected.favouriteSong();
-        System.out.println("Song favourited!");
-    }
 
-    // MODIFIES: this
-    // EFFECTS: resets the given song's status
-    private void resetSongStatus() {
-        System.out.println("Enter song name: ");
-        String songName = input.next();
-        Song selected = this.allSongs.findSong(songName);
-        selected.resetStatus();
-        System.out.println("Song status reset");
-    }
 }

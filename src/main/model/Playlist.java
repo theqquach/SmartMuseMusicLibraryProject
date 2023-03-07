@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // Represents a playlist with name, length (# of songs), playtime (length of playlist in seconds), list of all songs
-public class Playlist {
+public class Playlist implements Writable {
 
     private final String name;  // name of playlist
     private int length;   // number of songs in playlist
@@ -62,4 +66,25 @@ public class Playlist {
         return this.songList;
     }
 
+    @Override
+    //EFFECTS: converts playlist into a JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("length", Integer.toString(length));
+        json.put("playtime", Integer.toString(playtime));
+        json.put("songList", songListToJson());
+        return json;
+    }
+
+    // EFFECTS: returns Songs in Playlist as a JSON array
+    public JSONArray songListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Song song : songList) {
+            jsonArray.put(song.toJson());
+        }
+
+        return jsonArray;
+    }
 }
