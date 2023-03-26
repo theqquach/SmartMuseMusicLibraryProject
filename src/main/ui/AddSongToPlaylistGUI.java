@@ -69,8 +69,7 @@ public class AddSongToPlaylistGUI extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: creates JLabel headings
     public JLabel createHeading(String heading) {
-        JLabel header = new JLabel(heading);
-        return header;
+        return new JLabel(heading);
     }
 
     // REQUIRES: song and playlist exist and are in library
