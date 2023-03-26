@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 // GUI for main screen of music library
-public class MainMenuGUI extends JFrame implements ActionListener {
+public class MusicLibraryGUI extends JFrame implements ActionListener {
 
     private static final String JSON_STORE = "./data/library.json";
     private Library playlists;
@@ -38,12 +38,12 @@ public class MainMenuGUI extends JFrame implements ActionListener {
     private JButton loadButton;
 
     public static void main(String[] args) {
-        new MainMenuGUI();
+        new MusicLibraryGUI();
     }
 
     // MODIFIES: this
     // EFFECTS: creates the GUI
-    public MainMenuGUI() {
+    public MusicLibraryGUI() {
 
         playlists = new Library("Your Library");
         allSongs = new Playlist("Song Library");
@@ -144,10 +144,12 @@ public class MainMenuGUI extends JFrame implements ActionListener {
             }
         }
         if (e.getSource() == addSongToPlaylistButton) {
-
+            AddSongToPlaylistGUI astpg = new AddSongToPlaylistGUI(playlists);
+            playlists.findPlaylist(astpg.getPlaylistAddedTo().getName()).addSong(astpg.getSongToBeAdded());
         }
         if (e.getSource() == removeSongFromPlaylistButton) {
-
+            RemoveFromPlaylistGUI rfpg = new RemoveFromPlaylistGUI(playlists);
+            playlists.findPlaylist(rfpg.getPlaylistRemovedFrom().getName()).removeSong(rfpg.getSongToBeRemoved());
         }
         if (e.getSource() == saveButton) {
             try {

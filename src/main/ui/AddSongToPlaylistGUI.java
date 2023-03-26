@@ -1,6 +1,7 @@
 package ui;
 
 import model.Library;
+import model.Playlist;
 import model.Song;
 
 import javax.swing.*;
@@ -8,25 +9,24 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddSongGUI extends JFrame implements ActionListener {
+// creates a pop-up window for user to input song to add and playlist to add to
+public class AddSongToPlaylistGUI extends JFrame implements ActionListener {
+
     private JPanel panel;
     private JTextField songNameField;
-    private JTextField artistField;
-    private JTextField songLengthField;
+    private JTextField playlistNameField;
     private JLabel songName;
-    private JLabel artist;
-    private JLabel songLength;
+    private JLabel playlistName;
     private JButton submit;
 
     private Library library;
     private Song songToBeAdded;
+    private Playlist playlistAddedTo;
 
-    // MODIFIES: this
-    // EFFECTS: spawns the pop-up screen to add a song to Library
-    public AddSongGUI(Library playlists) {
+    public AddSongToPlaylistGUI(Library playlists) {
         library = playlists;
         createPanel();
-        this.setTitle("Add a Song");
+        this.setTitle("Add a Song to a Playlist");
         this.setSize(400, 200);
         this.setVisible(true);
         this.add(panel);
@@ -42,25 +42,9 @@ public class AddSongGUI extends JFrame implements ActionListener {
 
         this.panel.add(songName);
         this.panel.add(songNameField);
-        this.panel.add(artist);
-        this.panel.add(artistField);
-        this.panel.add(songLength);
-        this.panel.add(songLengthField);
+        this.panel.add(playlistName);
+        this.panel.add(playlistNameField);
         this.panel.add(submit);
-    }
-
-    // MODIFIES: this
-    // EFFECTS: gives functionality to buttons. when button is pressed perform appropriate action.
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == submit) {
-            String songNameInput = songNameField.getText();
-            String artistInput = artistField.getText();
-            String songLengthInput = songLengthField.getText();
-            songToBeAdded = new Song(songNameInput, artistInput, Integer.parseInt(songLengthInput));
-            this.library.findPlaylist("Song Library").addSong(songToBeAdded);
-            this.dispose();
-        }
     }
 
     // MODIFIES: this
@@ -68,15 +52,11 @@ public class AddSongGUI extends JFrame implements ActionListener {
     public void createFieldsButtons() {
         songNameField = new JTextField();
         songNameField.setPreferredSize(new Dimension(250, 30));
-        songName = createHeading("Song Name: ");
+        songName = createHeading("Name of Song to be added: ");
 
-        artistField = new JTextField();
-        artistField.setPreferredSize(new Dimension(250, 30));
-        artist = createHeading("Artist Name: ");
-
-        songLengthField = new JTextField();
-        songLengthField.setPreferredSize(new Dimension(250, 30));
-        songLength = createHeading("Song Length: ");
+        playlistNameField = new JTextField();
+        playlistNameField.setPreferredSize(new Dimension(250, 30));
+        playlistName = createHeading("Name of Playlist to add to: ");
 
         submit = new JButton();
         submit.setText("Submit");
@@ -93,7 +73,25 @@ public class AddSongGUI extends JFrame implements ActionListener {
         return header;
     }
 
+    // REQUIRES: song and playlist exist and are in library
+    // MODIFIES: this
+    // EFFECTS: creates response for button inputs. If button is pressed it does corresponding action.
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == submit) {
+            String songNameInput = songNameField.getText();
+            String playlistNameInput = playlistNameField.getText();
+            songToBeAdded = library.findPlaylist("Song Library").findSong(songNameInput);
+            playlistAddedTo = library.findPlaylist(playlistNameInput);
+            this.dispose();
+        }
+    }
+
     public Song getSongToBeAdded() {
         return songToBeAdded;
+    }
+
+    public Playlist getPlaylistAddedTo() {
+        return playlistAddedTo;
     }
 }
