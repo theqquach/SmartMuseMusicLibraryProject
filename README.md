@@ -27,10 +27,15 @@ I love listening to music, and love making playlists for different moods, settin
 ## Attribution:
 - UI draws from TellerApp's UI implementation.
 - Data persistence draws from JSONSerialization's persistence implementation.
+- GUI created with various online resources such as javatpoint.com and YouTuber Alex Lee.
 
-# Instructions for Grader: //TODO & TEST GUI OVERALL (CHECK ALL BUTTONS)
-- You can generate the first required action related to adding Xs to a Y by...
-- You can generate the second required action related to adding Xs to a Y by...
-- You can locate my visual component by...
-- You can save the state of my application by...
-- You can reload the state of my application by...
+# Instructions for Grader: 
+- Create a song and playlist with the "Add a new song to library" and "New playlist" buttons. You can then add a song to
+  a playlist by selecting the "Add a song to a playlist" button. 
+- You can remove songs from playlists with the "Remove song from playlist" button.
+- You can view all song by pressing the "View all songs in library" button. Or you can view songs in a specific playlist
+  by pressing "View songs in a playlist" and inputting the desired playlist to view.
+- You can view playlist names with the "View all playlists" button.
+- My visual component is located at the bottom of the main menu of the library.
+- You can save the state of my application by hitting the save button.
+- You can reload the state of my application by hitting the load button.
