@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// creates a gui for user to add a song to the song library
 public class AddSongGUI extends JFrame implements ActionListener {
     private JPanel panel;
     private JTextField songNameField;
@@ -21,8 +22,6 @@ public class AddSongGUI extends JFrame implements ActionListener {
     private Library library;
     private Song songToBeAdded;
 
-    // MODIFIES: this
-    // EFFECTS: spawns the pop-up screen to add a song to Library
     public AddSongGUI(Library playlists) {
         library = playlists;
         createPanel();
@@ -37,7 +36,7 @@ public class AddSongGUI extends JFrame implements ActionListener {
     public void createPanel() {
         this.panel = new JPanel();
         this.panel.setPreferredSize(new Dimension(400, 200));
-        this.panel.setLayout(new FlowLayout(1));
+        this.panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         createFieldsButtons();
 
         this.panel.add(songName);
@@ -89,8 +88,7 @@ public class AddSongGUI extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: creates JLabel headings
     public JLabel createHeading(String heading) {
-        JLabel header = new JLabel(heading);
-        return header;
+        return new JLabel(heading);
     }
 
     public Song getSongToBeAdded() {

@@ -37,6 +37,7 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
     private JButton saveButton;
     private JButton loadButton;
 
+    // EFFECTS: runs the MusicLibraryGUI
     public static void main(String[] args) {
         new MusicLibraryGUI();
     }
@@ -62,7 +63,6 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
 
         JLabel label = new JLabel();
         label.setIcon(icon);
-
         botPanel.add(label);
 
         panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
@@ -87,7 +87,8 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
-
+    // MODIFIES: this
+    // EFFECTS: creates the buttons for the UI
     public void createButtons() {
         allSongsButton = new JButton("View all songs in library");
         allSongsButton.addActionListener(this);
@@ -132,10 +133,10 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
             new FindPlaylistGUI(playlists);
         }
         if (e.getSource() == addNewSongButton) {
-           AddSongGUI asg = new AddSongGUI(playlists);
-           if (asg.getSongToBeAdded() != null) {
-               playlists.findPlaylist("Song Library").addSong(asg.getSongToBeAdded());
-           }
+            AddSongGUI asg = new AddSongGUI(playlists);
+            if (asg.getSongToBeAdded() != null) {
+                playlists.findPlaylist("Song Library").addSong(asg.getSongToBeAdded());
+            }
         }
         if (e.getSource() == newPlaylistButton) {
             AddPlaylistGUI apg = new AddPlaylistGUI(playlists);

@@ -1,6 +1,5 @@
 package ui;
 
-import model.Library;
 import model.Playlist;
 import model.Song;
 
@@ -29,7 +28,7 @@ public class PlaylistDisplay extends JFrame {
     public void outputSongs(Playlist playlist) {
         String s = "";
         for (Song song : playlist.getSongList()) {
-            s += song.getName() + "<br>" ;
+            s += song.getName() + "<br>";
             allSongs = "<html>" + s + "</html>";
         }
         panel.add(new JLabel(allSongs));

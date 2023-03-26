@@ -13,12 +13,10 @@ public class AllPlaylistDisplay extends JFrame {
     private Library library;
     private String allPlaylists;
 
-    // MODIFIES: this
-    // EFFECTS: spawns the pop-up screen to display all playlists
     public AllPlaylistDisplay(Library playlists) {
         library = playlists;
         createPanel();
-        outputPlaylists(playlists);
+        outputPlaylists();
 
         this.setTitle("Playlists in your Library");
         this.setSize(300, 600);
@@ -28,10 +26,10 @@ public class AllPlaylistDisplay extends JFrame {
 
     // MODIFIES: this
     // EFFECTS: outputs the names of playlists from the library via JLabels
-    public void outputPlaylists(Library playlists) {
+    public void outputPlaylists() {
         String pl = "";
         for (Playlist playlist : library.getPlaylists()) {
-            pl += playlist.getName() + "<br>" ;
+            pl += playlist.getName() + "<br>";
             allPlaylists = "<html>" + pl + "</html>";
         }
         panel.add(new JLabel(allPlaylists));

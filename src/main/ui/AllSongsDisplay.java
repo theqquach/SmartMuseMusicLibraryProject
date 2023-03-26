@@ -15,8 +15,6 @@ public class AllSongsDisplay extends JFrame {
     private Playlist allSongs;
     private String songs;
 
-    // MODIFIES: this
-    // EFFECTS: spawns the pop-up screen to display all songs
     public AllSongsDisplay(Library playlists) {
         library = playlists;
         allSongs = library.findPlaylist("Song Library");
@@ -45,6 +43,6 @@ public class AllSongsDisplay extends JFrame {
     public void createPanel() {
         this.panel = new JPanel();
         this.panel.setPreferredSize(new Dimension(600, 300));
-        this.panel.setLayout(new FlowLayout(1));
+        this.panel.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
 }

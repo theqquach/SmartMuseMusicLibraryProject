@@ -37,7 +37,7 @@ public class RemoveFromPlaylistGUI extends JFrame implements ActionListener {
     public void createPanel() {
         this.panel = new JPanel();
         this.panel.setPreferredSize(new Dimension(400, 200));
-        this.panel.setLayout(new FlowLayout(1));
+        this.panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         createFieldsButtons();
 
         this.panel.add(songName);
@@ -69,10 +69,11 @@ public class RemoveFromPlaylistGUI extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: creates JLabel headings
     public JLabel createHeading(String heading) {
-        JLabel header = new JLabel(heading);
-        return header;
+        return new JLabel(heading);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates response for button inputs. If button is pressed it does corresponding action.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == submit) {

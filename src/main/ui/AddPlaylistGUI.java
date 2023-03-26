@@ -2,13 +2,13 @@ package ui;
 
 import model.Library;
 import model.Playlist;
-import model.Song;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// creates a pop-up window and creates a new playlist
 public class AddPlaylistGUI extends JFrame implements ActionListener {
     private JPanel panel;
     private JTextField playlistNameField;
@@ -18,8 +18,6 @@ public class AddPlaylistGUI extends JFrame implements ActionListener {
     private Library library;
     private Playlist playlistToBeAdded;
 
-    // MODIFIES: this
-    // EFFECTS: spawns the pop-up screen to a playlist to Library
     public AddPlaylistGUI(Library playlists) {
         library = playlists;
         createPanel();
@@ -34,7 +32,7 @@ public class AddPlaylistGUI extends JFrame implements ActionListener {
     public void createPanel() {
         this.panel = new JPanel();
         this.panel.setPreferredSize(new Dimension(400, 200));
-        this.panel.setLayout(new FlowLayout(1));
+        this.panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         createFieldsButtons();
 
         this.panel.add(playlistName);
@@ -72,8 +70,7 @@ public class AddPlaylistGUI extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: creates JLabel headings
     public JLabel createHeading(String heading) {
-        JLabel header = new JLabel(heading);
-        return header;
+        return new JLabel(heading);
     }
 
     public Playlist getPlaylistToBeAdded() {
