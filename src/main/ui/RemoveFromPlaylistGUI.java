@@ -81,6 +81,7 @@ public class RemoveFromPlaylistGUI extends JFrame implements ActionListener {
             String playlistNameInput = playlistNameField.getText();
             songToBeRemoved = library.findPlaylist("Song Library").findSong(songNameInput);
             playlistRemovedFrom = library.findPlaylist(playlistNameInput);
+            this.library.findPlaylist(playlistNameInput).removeSong(songToBeRemoved);
             this.dispose();
         }
     }

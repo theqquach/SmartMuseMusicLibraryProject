@@ -81,8 +81,9 @@ public class AddSongToPlaylistGUI extends JFrame implements ActionListener {
         if (e.getSource() == submit) {
             String songNameInput = songNameField.getText();
             String playlistNameInput = playlistNameField.getText();
-            songToBeAdded = library.findPlaylist("Song Library").findSong(songNameInput);
+            songToBeAdded = library.getPlaylists().get(0).findSong(songNameInput);
             playlistAddedTo = library.findPlaylist(playlistNameInput);
+            this.library.findPlaylist(playlistNameInput).addSong(songToBeAdded);
             this.dispose();
         }
     }

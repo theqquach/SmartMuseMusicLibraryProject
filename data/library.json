@@ -3,8 +3,8 @@
     "playlists": [
         {
             "name": "Song Library",
-            "length": "2",
-            "playtime": "533",
+            "length": "3",
+            "playtime": "1000",
             "songList": [
                 {
                     "artist": "IU",
@@ -16,6 +16,12 @@
                     "artist": "New Jeans",
                     "name": "OMG ",
                     "length": "233",
+                    "status": "none"
+                },
+                {
+                    "artist": "Taylor Swift",
+                    "name": "Red",
+                    "length": "467",
                     "status": "none"
                 }
             ]

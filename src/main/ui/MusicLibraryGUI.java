@@ -148,10 +148,12 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         }
         if (e.getSource() == addSongToPlaylistButton) {
             AddSongToPlaylistGUI astpg = new AddSongToPlaylistGUI(playlists);
+            if (astpg.getPlaylistAddedTo() != null && astpg.getSongToBeAdded() != null )
             playlists.findPlaylist(astpg.getPlaylistAddedTo().getName()).addSong(astpg.getSongToBeAdded());
         }
         if (e.getSource() == removeSongFromPlaylistButton) {
             RemoveFromPlaylistGUI rfpg = new RemoveFromPlaylistGUI(playlists);
+            if (rfpg.getSongToBeRemoved() != null && rfpg.getPlaylistRemovedFrom() != null)
             playlists.findPlaylist(rfpg.getPlaylistRemovedFrom().getName()).removeSong(rfpg.getSongToBeRemoved());
         }
         if (e.getSource() == saveButton) {
