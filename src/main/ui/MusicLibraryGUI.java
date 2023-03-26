@@ -44,6 +44,7 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
 
     // MODIFIES: this
     // EFFECTS: creates the GUI
+    @SuppressWarnings("methodlength")
     public MusicLibraryGUI() {
 
         playlists = new Library("Your Library");
@@ -122,6 +123,7 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: creates response for button inputs. If button is pressed it does corresponding action.
     @Override
+    @SuppressWarnings("methodlength")
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == allSongsButton) {
             new AllSongsDisplay(playlists);
