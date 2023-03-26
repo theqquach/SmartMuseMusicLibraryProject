@@ -116,13 +116,22 @@ public class MainMenuGUI extends JFrame implements ActionListener {
             new AllSongsDisplay(playlists);
         }
         if (e.getSource() == allPlaylistsButton) {
-
+            new AllPlaylistDisplay(playlists);
         }
         if (e.getSource() == songsInPlaylistButton) {
 
         }
         if (e.getSource() == addNewSongButton) {
-
+           AddSongGUI asg = new AddSongGUI(playlists);
+           if (asg.getSongToBeAdded() != null) {
+               playlists.findPlaylist("Song Library").addSong(asg.getSongToBeAdded());
+           }
+        }
+        if (e.getSource() == newPlaylistButton) {
+            AddPlaylistGUI apg = new AddPlaylistGUI(playlists);
+            if (apg.getPlaylistToBeAdded() != null) {
+                playlists.addToPlaylists(apg.getPlaylistToBeAdded());
+            }
         }
         if (e.getSource() == addSongToPlaylistButton) {
 
