@@ -24,6 +24,7 @@ public class MainMenuGUI extends JFrame implements ActionListener {
 
     private JFrame frame;
     private JPanel panel;
+    private JPanel botPanel;
     private ImageIcon icon;
 
     private JButton allSongsButton;
@@ -50,10 +51,19 @@ public class MainMenuGUI extends JFrame implements ActionListener {
 
         frame = new JFrame();
         panel = new JPanel();
+        botPanel = new JPanel();
 
         icon = new ImageIcon("./res/musicIcon.png");
 
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
         createButtons();
+
+        JLabel label = new JLabel();
+        label.setIcon(icon);
+
+        botPanel.add(label);
 
         panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         panel.setLayout(new GridLayout(3, 2));
@@ -71,6 +81,7 @@ public class MainMenuGUI extends JFrame implements ActionListener {
         frame.setSize(100,100);
         frame.setIconImage(icon.getImage());
         frame.add(panel, BorderLayout.CENTER);
+        frame.add(botPanel, BorderLayout.SOUTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -107,7 +118,6 @@ public class MainMenuGUI extends JFrame implements ActionListener {
 
     }
 
-
     // MODIFIES: this
     // EFFECTS: creates response for button inputs. If button is pressed it does corresponding action.
     @Override
@@ -119,7 +129,7 @@ public class MainMenuGUI extends JFrame implements ActionListener {
             new AllPlaylistDisplay(playlists);
         }
         if (e.getSource() == songsInPlaylistButton) {
-
+            new FindPlaylistGUI(playlists);
         }
         if (e.getSource() == addNewSongButton) {
            AddSongGUI asg = new AddSongGUI(playlists);

@@ -4,7 +4,7 @@
         {
             "name": "Song Library",
             "length": "2",
-            "playtime": "550",
+            "playtime": "533",
             "songList": [
                 {
                     "artist": "IU",
@@ -13,26 +13,21 @@
                     "status": "none"
                 },
                 {
-                    "artist": "NJ",
-                    "name": "Cookie",
-                    "length": "250",
+                    "artist": "New Jeans",
+                    "name": "OMG ",
+                    "length": "233",
                     "status": "none"
                 }
             ]
         },
         {
-            "name": "songs",
-            "length": "1",
-            "playtime": "250",
-            "songList": [{
-                "artist": "NJ",
-                "name": "Cookie",
-                "length": "250",
-                "status": "none"
-            }]
+            "name": "taylor",
+            "length": "0",
+            "playtime": "0",
+            "songList": []
         },
         {
-            "name": "songs2",
+            "name": "kpop",
             "length": "0",
             "playtime": "0",
             "songList": []
