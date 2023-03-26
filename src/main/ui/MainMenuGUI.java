@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 // GUI for main screen of music library
 public class MainMenuGUI extends JFrame implements ActionListener {
@@ -41,6 +43,10 @@ public class MainMenuGUI extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: creates the GUI
     public MainMenuGUI() {
+
+        playlists = new Library("Your Library");
+        allSongs = new Playlist("Song Library");
+        playlists.addToPlaylists(allSongs);
 
         frame = new JFrame();
         panel = new JPanel();
@@ -101,8 +107,47 @@ public class MainMenuGUI extends JFrame implements ActionListener {
 
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: creates response for button inputs. If button is pressed it does corresponding action.
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == allSongsButton) {
+            new AllSongsDisplay(playlists);
+        }
+        if (e.getSource() == allPlaylistsButton) {
 
+        }
+        if (e.getSource() == songsInPlaylistButton) {
+
+        }
+        if (e.getSource() == addNewSongButton) {
+
+        }
+        if (e.getSource() == addSongToPlaylistButton) {
+
+        }
+        if (e.getSource() == removeSongFromPlaylistButton) {
+
+        }
+        if (e.getSource() == saveButton) {
+            try {
+                jsonWriter.open();
+                jsonWriter.write(playlists);
+                jsonWriter.close();
+                JOptionPane.showMessageDialog(null, "Library Saved", "Note:", JOptionPane.PLAIN_MESSAGE);
+            } catch (FileNotFoundException exception) {
+                JOptionPane.showMessageDialog(null, "Unable to write file", "Error:", JOptionPane.PLAIN_MESSAGE);
+            }
+
+        }
+        if (e.getSource() == loadButton) {
+            try {
+                playlists = jsonReader.read();
+                JOptionPane.showMessageDialog(null, "Loaded saved library", "Note:", JOptionPane.PLAIN_MESSAGE);
+            } catch (IOException exception) {
+                JOptionPane.showMessageDialog(null, "Unable to read file", "Error:", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
     }
 }
