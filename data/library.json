@@ -3,8 +3,8 @@
     "playlists": [
         {
             "name": "Song Library",
-            "length": "3",
-            "playtime": "1000",
+            "length": "4",
+            "playtime": "1300",
             "songList": [
                 {
                     "artist": "IU",
@@ -22,6 +22,12 @@
                     "artist": "Taylor Swift",
                     "name": "Red",
                     "length": "467",
+                    "status": "none"
+                },
+                {
+                    "artist": "Elton John",
+                    "name": "Goodbye Yellow Brick Road",
+                    "length": "300",
                     "status": "none"
                 }
             ]

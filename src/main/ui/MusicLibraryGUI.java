@@ -37,35 +37,32 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
     private JButton saveButton;
     private JButton loadButton;
 
-    // EFFECTS: runs the MusicLibraryGUI
-    public static void main(String[] args) {
-        new MusicLibraryGUI();
+    // MODIFIES: this
+    // EFFECTS: creates the GUI
+    public MusicLibraryGUI() {
+        init();
+        createButtons();
+        setupLogo();
+        setupPanel();
+        setupFrame();
     }
 
     // MODIFIES: this
-    // EFFECTS: creates the GUI
-    @SuppressWarnings("methodlength")
-    public MusicLibraryGUI() {
+    // EFFECTS: sets up the JFrame for the GUI
+    private void setupFrame() {
+        frame.setTitle("SmartMuse - Music Library");
+        frame.setSize(100, 100);
+        frame.setIconImage(icon.getImage());
+        frame.add(panel, BorderLayout.CENTER);
+        frame.add(botPanel, BorderLayout.SOUTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 
-        playlists = new Library("Your Library");
-        allSongs = new Playlist("Song Library");
-        playlists.addToPlaylists(allSongs);
-
-        frame = new JFrame();
-        panel = new JPanel();
-        botPanel = new JPanel();
-
-        icon = new ImageIcon("./res/musicIcon.png");
-
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
-
-        createButtons();
-
-        JLabel label = new JLabel();
-        label.setIcon(icon);
-        botPanel.add(label);
-
+    // MODIFIES: this
+    // EFFECTS: sets up the panel for the buttons
+    private void setupPanel() {
         panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         panel.setLayout(new GridLayout(3, 2));
         panel.add(allSongsButton);
@@ -77,15 +74,14 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         panel.add(songsInPlaylistButton);
         panel.add(removeSongFromPlaylistButton);
         panel.add(loadButton);
+    }
 
-        frame.setTitle("SmartMuse - Music Library");
-        frame.setSize(100,100);
-        frame.setIconImage(icon.getImage());
-        frame.add(panel, BorderLayout.CENTER);
-        frame.add(botPanel, BorderLayout.SOUTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+    // MODIFIES: this
+    // EFFECTS: sets up the bottom panel for the GUI
+    private void setupLogo() {
+        JLabel label = new JLabel();
+        label.setIcon(icon);
+        botPanel.add(label);
     }
 
     // MODIFIES: this
@@ -118,6 +114,20 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         loadButton = new JButton("Load library");
         loadButton.addActionListener(this);
 
+    }
+
+    // MODIFIES: this
+    // EFFECTS: initializes the variables for the MusicLibraryGUI
+    private void init() {
+        playlists = new Library("Your Library");
+        allSongs = new Playlist("Song Library");
+        playlists.addToPlaylists(allSongs);
+        frame = new JFrame();
+        panel = new JPanel();
+        botPanel = new JPanel();
+        icon = new ImageIcon("./res/musicIcon.png");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // MODIFIES: this
@@ -159,23 +169,34 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
             }
         }
         if (e.getSource() == saveButton) {
-            try {
-                jsonWriter.open();
-                jsonWriter.write(playlists);
-                jsonWriter.close();
-                JOptionPane.showMessageDialog(null, "Library Saved", "Note:", JOptionPane.PLAIN_MESSAGE);
-            } catch (FileNotFoundException exception) {
-                JOptionPane.showMessageDialog(null, "Unable to write file", "Error:", JOptionPane.PLAIN_MESSAGE);
-            }
-
+            save();
         }
         if (e.getSource() == loadButton) {
-            try {
-                playlists = jsonReader.read();
-                JOptionPane.showMessageDialog(null, "Loaded saved library", "Note:", JOptionPane.PLAIN_MESSAGE);
-            } catch (IOException exception) {
-                JOptionPane.showMessageDialog(null, "Unable to read file", "Error:", JOptionPane.PLAIN_MESSAGE);
-            }
+            load();
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: saves the current state of the library
+    private void save() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(playlists);
+            jsonWriter.close();
+            JOptionPane.showMessageDialog(null, "Library Saved", "Note:", JOptionPane.PLAIN_MESSAGE);
+        } catch (FileNotFoundException exception) {
+            JOptionPane.showMessageDialog(null, "Unable to write file", "Error:", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads the previous data from file into the library
+    private void load() {
+        try {
+            playlists = jsonReader.read();
+            JOptionPane.showMessageDialog(null, "Loaded saved library", "Note:", JOptionPane.PLAIN_MESSAGE);
+        } catch (IOException exception) {
+            JOptionPane.showMessageDialog(null, "Unable to read file", "Error:", JOptionPane.PLAIN_MESSAGE);
         }
     }
 }

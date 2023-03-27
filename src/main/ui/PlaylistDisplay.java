@@ -38,6 +38,8 @@ public class PlaylistDisplay extends JFrame {
     // EFFECTS: creates panel where the list of songs in the playlist will be displayed
     public void createPanel() {
         this.panel = new JPanel();
+        this.panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.panel.setPreferredSize(new Dimension(600, 300));
+
     }
 }
