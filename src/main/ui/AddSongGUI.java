@@ -56,6 +56,7 @@ public class AddSongGUI extends JFrame implements ActionListener {
             String songNameInput = songNameField.getText();
             String artistInput = artistField.getText();
             String songLengthInput = songLengthField.getText();
+
             songToBeAdded = new Song(songNameInput, artistInput, Integer.parseInt(songLengthInput));
             this.library.findPlaylist("Song Library").addSong(songToBeAdded);
             this.dispose();

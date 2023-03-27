@@ -73,7 +73,7 @@ public class RemoveFromPlaylistGUI extends JFrame implements ActionListener {
     }
 
     // MODIFIES: this
-    // EFFECTS: creates response for button inputs. If button is pressed it does corresponding action.
+    // EFFECTS: creates response for button inputs. If button is pressed it performs the corresponding action.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == submit) {

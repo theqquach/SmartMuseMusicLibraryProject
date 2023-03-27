@@ -27,9 +27,9 @@ public class AllPlaylistDisplay extends JFrame {
     // MODIFIES: this
     // EFFECTS: outputs the names of playlists from the library via JLabels
     public void outputPlaylists() {
-        String pl = "";
+        StringBuilder pl = new StringBuilder();
         for (Playlist playlist : library.getPlaylists()) {
-            pl += playlist.getName() + "<br>";
+            pl.append(playlist.getName()).append("<br>");
             allPlaylists = "<html>" + pl + "</html>";
         }
         panel.add(new JLabel(allPlaylists));
