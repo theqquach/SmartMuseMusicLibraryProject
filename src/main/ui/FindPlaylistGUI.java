@@ -19,6 +19,8 @@ public class FindPlaylistGUI extends JFrame implements ActionListener {
     private Library library;
     private Playlist playlistOfInterest;
 
+    // MODIFIES: this
+    // EFFECTS: creates the pop-up window with inputs for name of playlist to search for
     public FindPlaylistGUI(Library playlists) {
         library = playlists;
         createPanel();

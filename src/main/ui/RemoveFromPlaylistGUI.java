@@ -23,6 +23,8 @@ public class RemoveFromPlaylistGUI extends JFrame implements ActionListener {
     private Song songToBeRemoved;
     private Playlist playlistRemovedFrom;
 
+    // MODIFIES: this
+    // EFFECTS: creates the pop-up window with inputs to input song to be removed and playlist to remove from
     public RemoveFromPlaylistGUI(Library playlists) {
         library = playlists;
         createPanel();

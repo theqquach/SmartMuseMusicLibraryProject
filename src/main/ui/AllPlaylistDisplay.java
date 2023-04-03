@@ -13,6 +13,8 @@ public class AllPlaylistDisplay extends JFrame {
     private Library library;
     private String allPlaylists;
 
+    // MODIFIES: this
+    // EFFECTS: creates the pop-up window with the names of playlists listed
     public AllPlaylistDisplay(Library playlists) {
         library = playlists;
         createPanel();

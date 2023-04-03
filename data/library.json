@@ -3,8 +3,8 @@
     "playlists": [
         {
             "name": "Song Library",
-            "length": "4",
-            "playtime": "1300",
+            "length": "6",
+            "playtime": "1835",
             "songList": [
                 {
                     "artist": "IU",
@@ -27,6 +27,18 @@
                 {
                     "artist": "Elton John",
                     "name": "Goodbye Yellow Brick Road",
+                    "length": "300",
+                    "status": "none"
+                },
+                {
+                    "artist": "23",
+                    "name": "hdfgg",
+                    "length": "235",
+                    "status": "none"
+                },
+                {
+                    "artist": "Boo",
+                    "name": "Bah",
                     "length": "300",
                     "status": "none"
                 }

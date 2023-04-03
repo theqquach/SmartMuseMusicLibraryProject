@@ -13,6 +13,8 @@ public class PlaylistDisplay extends JFrame {
     private Playlist playlist;
     private String allSongs;
 
+    // MODIFIES: this
+    // EFFECTS: creates the pop-up window with the names of songs in a specific playlist
     public PlaylistDisplay(Playlist playlistOfInterest) {
         playlist = playlistOfInterest;
         createPanel();

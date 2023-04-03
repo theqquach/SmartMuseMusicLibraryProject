@@ -15,6 +15,8 @@ public class AllSongsDisplay extends JFrame {
     private Playlist allSongs;
     private String songs;
 
+    // MODIFIES: this
+    // EFFECTS: creates the pop-up window with names of all songs listed
     public AllSongsDisplay(Library playlists) {
         library = playlists;
         allSongs = library.findPlaylist("Song Library");

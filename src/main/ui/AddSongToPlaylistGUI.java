@@ -23,6 +23,8 @@ public class AddSongToPlaylistGUI extends JFrame implements ActionListener {
     private Song songToBeAdded;
     private Playlist playlistAddedTo;
 
+    // MODIFIES: this
+    // EFFECTS: creates the pop-up window with inputs to add song name to be added and playlist name to add to
     public AddSongToPlaylistGUI(Library playlists) {
         library = playlists;
         createPanel();

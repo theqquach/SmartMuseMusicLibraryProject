@@ -22,6 +22,8 @@ public class AddSongGUI extends JFrame implements ActionListener {
     private Library library;
     private Song songToBeAdded;
 
+    // MODIFIES: this
+    // EFFECTS: creates the pop-up window with inputs to add a new song
     public AddSongGUI(Library playlists) {
         library = playlists;
         createPanel();

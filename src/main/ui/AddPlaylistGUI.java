@@ -18,6 +18,8 @@ public class AddPlaylistGUI extends JFrame implements ActionListener {
     private Library library;
     private Playlist playlistToBeAdded;
 
+    // MODIFIES: this
+    // EFFECTS: creates the pop-up window with inputs to add playlist name
     public AddPlaylistGUI(Library playlists) {
         library = playlists;
         createPanel();
