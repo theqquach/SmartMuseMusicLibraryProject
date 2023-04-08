@@ -51,7 +51,6 @@ public class MusicLibraryApp {
         }
 
         System.out.println("\nGoodbye!");
-        EventLog.getInstance().logEvent(new Event("application closed"));
         printLog(eventLog);
     }
 

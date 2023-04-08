@@ -196,7 +196,6 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
             load();
         }
         if (e.getSource() == exitButton) {
-            EventLog.getInstance().logEvent(new Event("application closed"));
             printLog(eventLog);
             System.exit(0);
         }

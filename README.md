@@ -39,3 +39,30 @@ I love listening to music, and love making playlists for different moods, settin
 - My visual component is located at the bottom of the main menu of the library.
 - You can save the state of my application by hitting the save button.
 - You can reload the state of my application by hitting the load button.
+
+# Phase 4: Task 2:
+
+Sample of event log console print out:
+
+Event Log:
+Sat Apr 08 14:14:53 PDT 2023
+new playlist added
+Sat Apr 08 14:21:59 PDT 2023
+new playlist added
+Sat Apr 08 14:22:17 PDT 2023
+song added to playlist
+Sat Apr 08 14:22:33 PDT 2023
+song added to playlist
+Sat Apr 08 14:22:51 PDT 2023
+song found in given playlist
+Sat Apr 08 14:22:51 PDT 2023
+song added to playlist
+Sat Apr 08 14:22:56 PDT 2023
+song found in given playlist
+Sat Apr 08 14:22:56 PDT 2023
+song added to playlist
+Sat Apr 08 14:23:03 PDT 2023
+song found in given playlist
+Sat Apr 08 14:23:03 PDT 2023
+song removed from playlist
+Sat Apr 08 14:23:14 PDT 2023
