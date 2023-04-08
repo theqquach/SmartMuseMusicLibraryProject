@@ -229,7 +229,7 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
     // EFFECTS: prints out the events in eventLog
     private void printLog(EventLog events) {
         System.out.println("Event Log:");
-        for(Event event: events) {
+        for (Event event: events) {
             System.out.println(event.toString());
         }
     }
