@@ -26,6 +26,7 @@ public class Playlist implements Writable {
         this.length++;
         this.playtime = song.getLength() + this.playtime;
         songList.add(song);
+        EventLog.getInstance().logEvent(new Event("song added to playlist"));
     }
 
     // REQUIRES: song must be in playlist and playlist must not be empty
@@ -35,6 +36,7 @@ public class Playlist implements Writable {
             this.length--;
             this.playtime = this.playtime - song.getLength();
             songList.remove(song);
+            EventLog.getInstance().logEvent(new Event("song removed from playlist"));
         }
     }
 
@@ -47,6 +49,7 @@ public class Playlist implements Writable {
                 selected = this.getSongList().get(i);
             }
         }
+        EventLog.getInstance().logEvent(new Event("song found in given playlist"));
         return selected;
     }
 

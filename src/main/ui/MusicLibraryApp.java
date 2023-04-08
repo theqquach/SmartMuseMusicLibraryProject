@@ -1,8 +1,6 @@
 package ui;
 
-import model.Playlist;
-import model.Library;
-import model.Song;
+import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -21,12 +19,14 @@ public class MusicLibraryApp {
     private Scanner input;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private EventLog eventLog;
 
     // EFFECTS: runs the music library application
     public MusicLibraryApp() {
         playlists = new Library("Your Library");
         allSongs = new Playlist("Song Library");
         playlists.addToPlaylists(allSongs);
+        eventLog = EventLog.getInstance();
         runApp();
     }
 
@@ -51,6 +51,8 @@ public class MusicLibraryApp {
         }
 
         System.out.println("\nGoodbye!");
+        EventLog.getInstance().logEvent(new Event("application closed"));
+        printLog(eventLog);
     }
 
     // MODIFIES: this
@@ -241,5 +243,13 @@ public class MusicLibraryApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: prints out the events in eventLog
+    private void printLog(EventLog events) {
+        System.out.println("Event Log:");
+        for(Event event: events) {
+            System.out.println(event.toString());
+        }
+    }
 
 }

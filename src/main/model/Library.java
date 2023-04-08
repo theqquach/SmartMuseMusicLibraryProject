@@ -53,6 +53,7 @@ public class Library implements Writable {
     // EFFECTS: adds given playlist to playlist list.
     public void addToPlaylists(Playlist playlist) {
         this.playlists.add(playlist);
+        EventLog.getInstance().logEvent(new Event("new playlist added"));
     }
 
     public ArrayList<Playlist> getPlaylists() {

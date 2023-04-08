@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Library;
 import model.Playlist;
 import persistence.JsonReader;
@@ -24,6 +26,7 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
 
     private JFrame frame;
     private JPanel panel;
+    private JPanel midPanel;
     private JPanel botPanel;
     private ImageIcon icon;
 
@@ -36,6 +39,9 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
     private JButton removeSongFromPlaylistButton;
     private JButton saveButton;
     private JButton loadButton;
+    private JButton exitButton;
+
+    private EventLog eventLog;
 
     // MODIFIES: this
     // EFFECTS: creates the GUI
@@ -44,6 +50,7 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         createButtons();
         setupLogo();
         setupPanel();
+        setupMidPanel();
         setupFrame();
     }
 
@@ -53,7 +60,8 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         frame.setTitle("SmartMuse - Music Library");
         frame.setSize(100, 100);
         frame.setIconImage(icon.getImage());
-        frame.add(panel, BorderLayout.CENTER);
+        frame.add(panel, BorderLayout.NORTH);
+        frame.add(midPanel, BorderLayout.CENTER);
         frame.add(botPanel, BorderLayout.SOUTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -63,7 +71,7 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: sets up the panel for the buttons
     private void setupPanel() {
-        panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+        panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 0, 100));
         panel.setLayout(new GridLayout(3, 2));
         panel.add(allSongsButton);
         panel.add(addNewSongButton);
@@ -74,6 +82,13 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         panel.add(songsInPlaylistButton);
         panel.add(removeSongFromPlaylistButton);
         panel.add(loadButton);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets up the middle panel for the GUI
+    private void setupMidPanel() {
+        midPanel.setBorder(BorderFactory.createEmptyBorder(15, 100, 25, 100));
+        midPanel.add(exitButton);
     }
 
     // MODIFIES: this
@@ -114,6 +129,9 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         loadButton = new JButton("Load library");
         loadButton.addActionListener(this);
 
+        exitButton = new JButton("Exit Application");
+        exitButton.addActionListener(this);
+
     }
 
     // MODIFIES: this
@@ -124,10 +142,13 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         playlists.addToPlaylists(allSongs);
         frame = new JFrame();
         panel = new JPanel();
+        midPanel = new JPanel();
         botPanel = new JPanel();
         icon = new ImageIcon("./res/musicIcon.png");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+        eventLog = EventLog.getInstance();
+
     }
 
     // MODIFIES: this
@@ -174,6 +195,11 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
         if (e.getSource() == loadButton) {
             load();
         }
+        if (e.getSource() == exitButton) {
+            EventLog.getInstance().logEvent(new Event("application closed"));
+            printLog(eventLog);
+            System.exit(0);
+        }
     }
 
     // MODIFIES: this
@@ -197,6 +223,15 @@ public class MusicLibraryGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Loaded saved library", "Note:", JOptionPane.PLAIN_MESSAGE);
         } catch (IOException exception) {
             JOptionPane.showMessageDialog(null, "Unable to read file", "Error:", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: prints out the events in eventLog
+    private void printLog(EventLog events) {
+        System.out.println("Event Log:");
+        for(Event event: events) {
+            System.out.println(event.toString());
         }
     }
 }
