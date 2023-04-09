@@ -28,6 +28,7 @@ I love listening to music, and love making playlists for different moods, settin
 - UI draws from TellerApp's UI implementation.
 - Data persistence draws from JSONSerialization's persistence implementation.
 - GUI created with various online resources such as javatpoint.com and YouTuber Alex Lee.
+- Event Logging draws from AlarmSystem's Event and EventLog classes.
 
 # Instructions for Grader: 
 - Create a song and playlist with the "Add a new song to library" and "New playlist" buttons. You can then add a song to
@@ -66,3 +67,13 @@ song found in given playlist
 Sat Apr 08 14:23:03 PDT 2023
 song removed from playlist
 Sat Apr 08 14:23:14 PDT 2023
+
+# Phase 4: Task 3:
+
+One thing I would do with more time is refactor the Display classes. In the AllPlaylistDisplay, AllSongsDisplay, and 
+PlaylistDisplay classes, there is a lot of repetitive code. To refactor this, I would implement an abstract class, 
+Display, with methods that are similar in these classes and have the classes extend the Display class. This would reduce
+the amount of repetitive code in my program. This would allow the display to be created while each class would simply 
+change what is displayed in the window.
+
+
