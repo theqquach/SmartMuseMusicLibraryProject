@@ -43,6 +43,9 @@ I love listening to music, and love making playlists for different moods, settin
 
 # Phase 4: Task 2:
 
+The EventLog is added to when a new playlist or song is created, a song is added or removed from a playlist, and 
+when a song is added to a playlist. 
+
 Sample of event log console print out:
 
 Event Log:
@@ -76,4 +79,9 @@ Display, with methods that are similar in these classes and have the classes ext
 the amount of repetitive code in my program. This would allow the display to be created while each class would simply 
 change what is displayed in the window.
 
+Another possible refactoring that could be done is providing public getter for playlists so that each GUI could access 
+and edit the library within the class, rather than pass the library through as a parameter. This would also allow for
+better cohesion within the class. It could also make it so that the actual action performed is done within each
+respective class, rather than the MusicLibraryGUI class accessing the fields within the newly created class to perform
+the desired action. 
 
